@@ -1,0 +1,668 @@
+{
+    "packages": [
+        {
+            "name": "arts/license-manager",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/art/Projects/Framework/packages/ArtsLicenseManager",
+                "reference": "83a68774facbb064a573bfba019551bc3575bd10"
+            },
+            "require": {
+                "arts/notice-manager": "@dev",
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "captainhook/captainhook": "^5.27",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "ergebnis/composer-normalize": "^2.48",
+                "phpstan/phpstan": "^2.0",
+                "squizlabs/php_codesniffer": "^3.13.4",
+                "szepeviktor/phpstan-wordpress": "^2.0",
+                "wp-coding-standards/wpcs": "^3.0"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Arts\\LicenseManager\\": "src/php/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "post-update-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "check": [
+                    "@phpcs",
+                    "@phpstan"
+                ],
+                "fix": [
+                    "@phpcbf"
+                ],
+                "normalize": [
+                    "composer-normalize"
+                ],
+                "phpcbf": [
+                    "phpcbf --standard=phpcs.xml"
+                ],
+                "phpcs": [
+                    "phpcs --standard=phpcs.xml"
+                ],
+                "phpstan": [
+                    "phpstan analyse --memory-limit=1G"
+                ],
+                "phpstan:baseline": [
+                    "phpstan analyse --memory-limit=1G --generate-baseline"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Artem Semkin",
+                    "email": "me@artemsemkin.com"
+                }
+            ],
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            },
+            "install-path": "../arts/license-manager"
+        },
+        {
+            "name": "arts/merlin-wp",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/art/Projects/Framework/packages/ArtsMerlin",
+                "reference": "327aeab60a5840cf7ba21c99d0d888ae5452fc5a"
+            },
+            "require": {
+                "arts/utilities": "@dev",
+                "arts/wp-content-importer-v2": "@dev",
+                "monolog/monolog": "^2.10"
+            },
+            "require-dev": {
+                "captainhook/captainhook": "^5.27",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "ergebnis/composer-normalize": "^2.48",
+                "phpstan/phpstan": "^2.0",
+                "squizlabs/php_codesniffer": "^3.13.4",
+                "szepeviktor/phpstan-wordpress": "^2.0",
+                "wp-coding-standards/wpcs": "^3.0"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Arts\\Merlin\\": "src/php/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "post-update-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "check": [
+                    "@phpcs",
+                    "@phpstan"
+                ],
+                "fix": [
+                    "@phpcbf"
+                ],
+                "normalize": [
+                    "composer-normalize"
+                ],
+                "phpcbf": [
+                    "phpcbf --standard=phpcs.xml"
+                ],
+                "phpcs": [
+                    "phpcs --standard=phpcs.xml"
+                ],
+                "phpstan": [
+                    "phpstan analyse --memory-limit=1G"
+                ],
+                "phpstan:baseline": [
+                    "phpstan analyse --memory-limit=1G --generate-baseline"
+                ]
+            },
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Semkin",
+                    "homepage": "https://artemsemkin.com"
+                },
+                {
+                    "name": "Rich Tabor",
+                    "homepage": "https://richtabor.com"
+                },
+                {
+                    "name": "ProteusThemes",
+                    "homepage": "https://www.proteusthemes.com/"
+                }
+            ],
+            "description": "Better WordPress Theme Onboarding. Forked from Merlin WP by Rich Tabor.",
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            },
+            "install-path": "../arts/merlin-wp"
+        },
+        {
+            "name": "arts/notice-manager",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/art/Projects/Framework/packages/ArtsNoticeManager",
+                "reference": "0bc6f43b06a1889e1e96bbf0972a2d8d61f1a6f5"
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "captainhook/captainhook": "^5.27",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "ergebnis/composer-normalize": "^2.48",
+                "phpstan/phpstan": "^2.0",
+                "squizlabs/php_codesniffer": "^3.13.4",
+                "szepeviktor/phpstan-wordpress": "^2.0",
+                "wp-coding-standards/wpcs": "^3.0"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Arts\\NoticeManager\\": "src/php/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "post-update-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "check": [
+                    "@phpcs",
+                    "@phpstan"
+                ],
+                "fix": [
+                    "@phpcbf"
+                ],
+                "normalize": [
+                    "composer-normalize"
+                ],
+                "phpcbf": [
+                    "phpcbf --standard=phpcs.xml"
+                ],
+                "phpcs": [
+                    "phpcs --standard=phpcs.xml"
+                ],
+                "phpstan": [
+                    "phpstan analyse --memory-limit=1G"
+                ],
+                "phpstan:baseline": [
+                    "phpstan analyse --memory-limit=1G --generate-baseline"
+                ]
+            },
+            "description": "Manages the notices appearance in the WordPress admin panel",
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            },
+            "install-path": "../arts/notice-manager"
+        },
+        {
+            "name": "arts/tgm-plugin-activation",
+            "version": "2.6.1",
+            "version_normalized": "2.6.1.0",
+            "dist": {
+                "type": "path",
+                "url": "/Users/art/Projects/Framework/packages/ArtsTGM",
+                "reference": "edbbc349db34b540cb8aa3881ba1647a238ce883"
+            },
+            "require-dev": {
+                "captainhook/captainhook": "^5.27",
+                "ergebnis/composer-normalize": "^2.48"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/class-tgm-plugin-activation.php"
+                ]
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "post-update-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "normalize": [
+                    "composer-normalize"
+                ]
+            },
+            "description": "TGM Plugin Activation is a PHP library that allows you to easily require or recommend plugins for your WordPress themes (and plugins). It allows your users to install and even automatically activate plugins in singular or bulk fashion using native WordPress classes, functions and interfaces. You can reference pre-packaged plugins, plugins from the WordPress Plugin Repository or even plugins hosted elsewhere on the internet.",
+            "keywords": [
+                "activation",
+                "plugin",
+                "recommend",
+                "require",
+                "tgm",
+                "wordpress"
+            ],
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            },
+            "install-path": "../arts/tgm-plugin-activation"
+        },
+        {
+            "name": "arts/utilities",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/art/Projects/Framework/packages/ArtsUtilities",
+                "reference": "1bdf232db458bbef0205ddbb29aff5f402b048da"
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "arts/elementor-stubs": "@dev",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "ergebnis/composer-normalize": "^2.48",
+                "php-stubs/acf-pro-stubs": "^6.5",
+                "php-stubs/woocommerce-stubs": "^10.5",
+                "php-stubs/wp-cli-stubs": "^2.12",
+                "phpstan/phpstan": "^2.0",
+                "squizlabs/php_codesniffer": "^3.13.4",
+                "szepeviktor/phpstan-wordpress": "^2.0",
+                "wp-coding-standards/wpcs": "^3.0"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Arts\\Utilities\\": "src/php/"
+                }
+            },
+            "scripts": {
+                "check": [
+                    "@phpcs",
+                    "@phpstan"
+                ],
+                "fix": [
+                    "@phpcbf"
+                ],
+                "normalize": [
+                    "composer-normalize"
+                ],
+                "phpcbf": [
+                    "phpcbf --standard=phpcs.xml"
+                ],
+                "phpcs": [
+                    "phpcs --standard=phpcs.xml"
+                ],
+                "phpstan": [
+                    "phpstan analyse --memory-limit=2G"
+                ],
+                "phpstan:baseline": [
+                    "phpstan analyse --memory-limit=1G --generate-baseline"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Semkin",
+                    "email": "me@artemsemkin.com"
+                }
+            ],
+            "description": "A comprehensive collection of utility methods for WordPress theme and plugin development, with a focus on Elementor integration.",
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            },
+            "install-path": "../arts/utilities"
+        },
+        {
+            "name": "arts/wizard-setup",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/art/Projects/Framework/packages/ArtsWizardSetup",
+                "reference": "3942fc277d3683b72e299096ad10e081c65d5d36"
+            },
+            "require": {
+                "arts/merlin-wp": "@dev",
+                "arts/utilities": "@dev"
+            },
+            "require-dev": {
+                "captainhook/captainhook": "^5.27",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "ergebnis/composer-normalize": "^2.48",
+                "phpstan/phpstan": "^2.0",
+                "squizlabs/php_codesniffer": "^3.13.4",
+                "szepeviktor/phpstan-wordpress": "^2.0",
+                "wp-coding-standards/wpcs": "^3.0"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Arts\\WizardSetup\\": "src/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "post-update-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "check": [
+                    "@phpcs",
+                    "@phpstan"
+                ],
+                "fix": [
+                    "@phpcbf"
+                ],
+                "normalize": [
+                    "composer-normalize"
+                ],
+                "phpcbf": [
+                    "phpcbf --standard=phpcs.xml"
+                ],
+                "phpcs": [
+                    "phpcs --standard=phpcs.xml"
+                ],
+                "phpstan": [
+                    "phpstan analyse --memory-limit=1G"
+                ],
+                "phpstan:baseline": [
+                    "phpstan analyse --memory-limit=1G --generate-baseline"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Artem Semkin",
+                    "email": "art.krsk@gmail.com"
+                }
+            ],
+            "description": "Theme onboarding based on MerlinWP by Rich Tabor",
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            },
+            "install-path": "../arts/wizard-setup"
+        },
+        {
+            "name": "arts/wp-content-importer-v2",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/art/Projects/Framework/packages/ArtsContentImporter",
+                "reference": "0b56a8133a94c6149b48a3ca3b1be23e0de30e86"
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "captainhook/captainhook": "^5.27",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "ergebnis/composer-normalize": "^2.48",
+                "phpstan/phpstan": "^2.0",
+                "squizlabs/php_codesniffer": "^3.13.4",
+                "szepeviktor/phpstan-wordpress": "^2.0",
+                "wp-coding-standards/wpcs": "^3.0"
+            },
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "ProteusThemes\\WPContentImporter2\\": "src/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "post-update-cmd": [
+                    "vendor/bin/captainhook install -f -s"
+                ],
+                "check": [
+                    "@phpcs",
+                    "@phpstan"
+                ],
+                "fix": [
+                    "@phpcbf"
+                ],
+                "normalize": [
+                    "composer-normalize"
+                ],
+                "phpcbf": [
+                    "phpcbf --standard=phpcs.xml"
+                ],
+                "phpcs": [
+                    "phpcs --standard=phpcs.xml"
+                ],
+                "phpstan": [
+                    "phpstan analyse --memory-limit=1G"
+                ],
+                "phpstan:baseline": [
+                    "phpstan analyse --memory-limit=1G --generate-baseline"
+                ]
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Semkin",
+                    "homepage": "https://artemsemkin.com"
+                },
+                {
+                    "name": "Gregor Capuder",
+                    "email": "capuderg@gmail.com"
+                },
+                {
+                    "name": "Primoz Cigler",
+                    "email": "primoz@proteusnet.com"
+                },
+                {
+                    "name": "Humanmade contributors",
+                    "homepage": "https://github.com/humanmade/WordPress-Importer/graphs/contributors"
+                }
+            ],
+            "description": "Improved WP content importer used in OCDI plugin and MerlinWP. Forked from `proteusthemes/wp-content-importer-v2` and improved by Artem Semkin.",
+            "keywords": [
+                "content",
+                "import",
+                "proteusthemes",
+                "theme",
+                "wordpress",
+                "wp"
+            ],
+            "transport-options": {
+                "symlink": false,
+                "relative": false
+            },
+            "install-path": "../arts/wp-content-importer-v2"
+        },
+        {
+            "name": "monolog/monolog",
+            "version": "2.x-dev",
+            "version_normalized": "2.9999999.9999999.9999999-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "9be1aad8c38a87377402a215261e26e0b5dab9ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/9be1aad8c38a87377402a215261e26e0b5dab9ca",
+                "reference": "9be1aad8c38a87377402a215261e26e0b5dab9ca",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "psr/log": "^1.0.1 || ^2.0 || ^3.0"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0.0 || 2.0.0 || 3.0.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+                "doctrine/couchdb": "~1.0@dev",
+                "elasticsearch/elasticsearch": "^7 || ^8",
+                "ext-json": "*",
+                "graylog2/gelf-php": "^1.4.2 || ^2@dev",
+                "guzzlehttp/guzzle": "^7.4",
+                "guzzlehttp/psr7": "^2.2",
+                "mongodb/mongodb": "^1.8 || ^2.0",
+                "php-amqplib/php-amqplib": "~2.4 || ^3",
+                "phpspec/prophecy": "^1.15",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^8.5.38 || ^9.6.19",
+                "predis/predis": "^1.1 || ^2.0",
+                "rollbar/rollbar": "^1.3 || ^2 || ^3",
+                "ruflin/elastica": "^7",
+                "swiftmailer/swiftmailer": "^5.3|^6.0",
+                "symfony/mailer": "^5.4 || ^6",
+                "symfony/mime": "^5.4 || ^6"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-curl": "Required to send log messages using the IFTTTHandler, the LogglyHandler, the SendGridHandler, the SlackWebhookHandler or the TelegramBotHandler",
+                "ext-mbstring": "Allow to work properly with unicode symbols",
+                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
+                "ext-openssl": "Required to send log messages using SSL",
+                "ext-sockets": "Allow sending log messages to a Syslog server (via UDP driver)",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+            },
+            "time": "2026-07-02T08:15:24+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "https://seld.be"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "https://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ],
+            "support": {
+                "issues": "https://github.com/Seldaek/monolog/issues",
+                "source": "https://github.com/Seldaek/monolog/tree/2.x"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "../monolog/monolog"
+        },
+        {
+            "name": "psr/log",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "time": "2024-09-11T13:17:53+00:00",
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/3.0.2"
+            },
+            "install-path": "../psr/log"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

@@ -1,0 +1,216 @@
+/*
+Theme Name: Mars Light
+Description: A lightweight child theme for Rhye, tailored for Mars Universe.
+Template: rhye
+Version: 1.0.0
+Text Domain: mars-light
+*/
+
+:root {
+  --mars-ink: #111111;
+  --mars-paper: #f7f6f2;
+  --mars-line: #d9d7d0;
+  --mars-muted: #6e6d68;
+  --mars-accent: #a32720;
+  --mars-space: clamp(1.25rem, 3vw, 3.5rem);
+}
+
+html { scroll-behavior: auto; }
+body,
+.bg-light-1,
+.bg-light-2,
+.bg-light-3,
+.bg-white {
+  background: var(--mars-paper) !important;
+  color: var(--mars-ink) !important;
+}
+body,
+button,
+input,
+textarea,
+select {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6,
+.section-masthead__heading,
+.menu-overlay__item-wrapper {
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.035em !important;
+}
+
+/* Quiet, readable header */
+.header,
+.header.header_fixed,
+.header__container {
+  min-height: 72px;
+}
+.header__container {
+  padding: 0 var(--mars-space) !important;
+  border-bottom: 1px solid transparent;
+}
+.header_fixed.js-header-sticky .header__container,
+.header_sticky .header__container {
+  background: color-mix(in srgb, var(--mars-paper) 94%, transparent) !important;
+  border-color: var(--mars-line);
+  backdrop-filter: blur(12px);
+}
+.header__burger {
+  width: 28px !important;
+  height: 20px !important;
+}
+.header__burger-line {
+  height: 1px !important;
+  background: currentColor !important;
+}
+
+/* Replace the theatrical overlay with a compact navigation sheet. */
+.header__wrapper-overlay-menu {
+  padding: 112px var(--mars-space) 48px !important;
+  background: var(--mars-paper) !important;
+}
+.menu-overlay {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 4vw;
+  max-width: 1180px;
+  margin: 0 auto !important;
+}
+.menu-overlay > li {
+  border-top: 1px solid var(--mars-line);
+  padding: 14px 0 !important;
+}
+.menu-overlay__item-wrapper {
+  color: var(--mars-ink) !important;
+  font-size: clamp(1.7rem, 3vw, 3.2rem) !important;
+  line-height: 1.02 !important;
+}
+.menu-overlay .sub-menu {
+  display: none !important;
+}
+
+/* Project mastheads: no parallax, no intrusive viewport takeover. */
+.section-masthead,
+.section-masthead__background,
+.section-masthead__wrapper-bg {
+  min-height: min(68svh, 680px) !important;
+}
+.section-masthead__background {
+  transform: none !important;
+}
+.section-masthead__heading {
+  max-width: 12ch;
+  font-size: clamp(3.2rem, 8vw, 8.8rem) !important;
+  line-height: 0.92 !important;
+}
+.section-masthead__subheading,
+.section-masthead .figure-image__caption {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif !important;
+  font-size: .72rem !important;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* Typography and content widths for project detail pages. */
+.elementor-section .elementor-container,
+.container,
+.container-fluid {
+  padding-left: var(--mars-space) !important;
+  padding-right: var(--mars-space) !important;
+}
+.section-content__heading h2,
+.section-content__heading {
+  font-size: clamp(2.1rem, 4vw, 4.6rem) !important;
+  line-height: .98 !important;
+}
+.section-content__text,
+.section-content__text p {
+  max-width: 42rem;
+  font-size: clamp(1rem, 1.35vw, 1.2rem) !important;
+  line-height: 1.65 !important;
+}
+.section-properties {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 !important;
+  border-top: 1px solid var(--mars-line);
+  border-bottom: 1px solid var(--mars-line);
+}
+.section-properties__item {
+  min-height: 116px;
+  padding: 20px 18px 16px 0 !important;
+  border-right: 1px solid var(--mars-line);
+}
+.section-properties__item:last-child { border-right: 0; }
+.section-properties__item-title,
+.section-properties__item-label {
+  color: var(--mars-muted) !important;
+  font-size: .68rem !important;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+/* Buttons become quiet text actions; imagery remains the visual focus. */
+.button,
+button[type="submit"],
+input[type="submit"] {
+  min-height: 42px !important;
+  padding: 0 18px !important;
+  border: 1px solid var(--mars-ink) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--mars-ink) !important;
+  font-size: .7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .13em;
+}
+.button:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background: var(--mars-ink) !important;
+  color: var(--mars-paper) !important;
+}
+
+/* Portfolio navigation is a simple editorial index. */
+.section-nav-projects,
+.section-nav-projects__wrapper {
+  background: var(--mars-ink) !important;
+  color: var(--mars-paper) !important;
+}
+.section-nav-projects__link {
+  font-family: "Iowan Old Style", "Baskerville", serif !important;
+  font-size: clamp(2rem, 5vw, 5rem) !important;
+  line-height: .98 !important;
+}
+
+/* Remove decoration and transform-heavy interactions. */
+.cursor,
+.cursor-follower,
+.preloader,
+.js-cursor,
+.js-cursor-follower,
+.js-scroll-down,
+.section-masthead__curtain,
+.section-masthead__overlay,
+.section-masthead__wrapper-scroll-down {
+  display: none !important;
+}
+*, *::before, *::after {
+  cursor: auto !important;
+  animation-duration: .01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+}
+
+@media (max-width: 767px) {
+  :root { --mars-space: 20px; }
+  .menu-overlay { grid-template-columns: 1fr; }
+  .section-properties { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .section-properties__item:nth-child(2n) { border-right: 0; }
+  .section-properties__item:nth-child(-n + 2) { border-bottom: 1px solid var(--mars-line); }
+  .section-masthead,
+  .section-masthead__background,
+  .section-masthead__wrapper-bg { min-height: 55svh !important; }
+}
