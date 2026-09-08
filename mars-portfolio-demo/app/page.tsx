@@ -63,6 +63,7 @@ export default function Home() {
     setMenuClosing(true);
     window.setTimeout(() => { setMenuOpen(false); setMenuClosing(false); }, 360);
   };
+  const toggleTheme = () => setDark(!dark);
   const movePreview = (event: MouseEvent<HTMLElement>) => {
     targetPointer.current = { x: event.clientX, y: event.clientY };
     if (hovered !== null) {
@@ -79,7 +80,7 @@ export default function Home() {
     if (hovered !== null && hovered !== index) {
       if (previewSwapTimer.current !== null) window.clearTimeout(previewSwapTimer.current);
       setPreviousImage(projects[hovered].image);
-      previewSwapTimer.current = window.setTimeout(() => setPreviousImage(null), 820);
+      previewSwapTimer.current = window.setTimeout(() => setPreviousImage(null), 660);
     }
     document.querySelectorAll<HTMLElement>('.row-title').forEach((title, titleIndex) => {
       if (titleIndex !== index) title.style.transform = '';
@@ -98,7 +99,7 @@ export default function Home() {
       <button className="brand" onClick={() => go('home')} aria-label="Mars Universe 首页"><img src="/assets/mars-logo-trimmed.png" alt="Mars Universe" /></button>
       <div className="header-actions">
         <button className="text-button" onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}>{lang === 'zh' ? 'EN' : '中文'}</button>
-        <button className="icon-button" onClick={() => setDark(!dark)} aria-label="切换黑白模式">{dark ? <Sun size={18} /> : <Moon size={18} />}</button>
+        <button className="icon-button" onClick={toggleTheme} aria-label="切换黑白模式">{dark ? <Sun size={18} /> : <Moon size={18} />}</button>
         <button className="menu-button" onClick={() => { setMenuClosing(false); setMenuOpen(true); }}><span>MENU</span><Menu size={20} strokeWidth={1.8} /></button>
       </div>
     </header>
@@ -133,7 +134,7 @@ export default function Home() {
     </section>}
 
     {menuOpen && <div className={`menu-overlay ${lang === 'zh' ? 'menu-zh' : 'menu-en'} ${menuClosing ? 'menu-closing' : ''}`} role="dialog" aria-modal="true" aria-label="主菜单">
-      <div className="menu-top"><button className="menu-logo" onClick={() => go('home')} aria-label="Mars Universe"><img src="/assets/mars-logo-trimmed.png" alt="Mars Universe" /></button><div className="menu-actions"><button className="text-button" onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}>{lang === 'zh' ? 'EN' : '中文'}</button><button className="icon-button" onClick={() => setDark(!dark)} aria-label="切换黑白模式">{dark ? <Sun size={18} /> : <Moon size={18} />}</button><button className="menu-close" onClick={closeMenu}><X size={20} strokeWidth={1.8} /> {lang === 'zh' ? '关闭' : 'CLOSE'}</button></div></div>
+      <div className="menu-top"><button className="menu-logo" onClick={() => go('home')} aria-label="Mars Universe"><img src="/assets/mars-logo-trimmed.png" alt="Mars Universe" /></button><div className="menu-actions"><button className="text-button" onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}>{lang === 'zh' ? 'EN' : '中文'}</button><button className="icon-button" onClick={toggleTheme} aria-label="切换黑白模式">{dark ? <Sun size={18} /> : <Moon size={18} />}</button><button className="menu-close" onClick={closeMenu}><X size={20} strokeWidth={1.8} /> {lang === 'zh' ? '关闭' : 'CLOSE'}</button></div></div>
       <nav>
         <button aria-label={lang === 'zh' ? '首页' : 'HOME'} onClick={() => go('home')}><RollingText text={lang === 'zh' ? '首页' : 'HOME'} /></button>
         <button aria-label={lang === 'zh' ? '全部项目' : 'ALL PROJECTS'} onClick={() => go('home')}><RollingText text={lang === 'zh' ? '全部项目' : 'ALL PROJECTS'} /></button>

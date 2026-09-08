@@ -158,4 +158,25 @@
 .rolling-track{height:2em;line-height:1;overflow:visible}
 .rolling-track>span{flex:0 0 1em;height:1em;overflow:hidden;line-height:1em}
 .menu-overlay nav button:hover .rolling-track,.menu-overlay nav button:focus-visible .rolling-track{transform:translate3d(0,-1em,0)}
+
+/* Final transition timing and seamless MENU/CLOSE color handoff. */
+.hover-preview{transition-duration:.58s}
+.hover-preview .preview-current.is-switching{animation-duration:.62s}
+.menu-close,.menu-close:hover,.menu-close:focus-visible{
+  border-color:var(--fg)!important;
+  background:var(--fg)!important;
+  color:var(--bg)!important;
+}
+.menu-overlay,.menu-overlay.menu-closing{animation:none}
+.menu-overlay nav,.menu-overlay .menu-footer{animation:menuContentIn .34s cubic-bezier(.16,1,.3,1)}
+.menu-overlay.menu-closing nav,.menu-overlay.menu-closing .menu-footer{animation:menuContentOut .3s ease forwards}
+@keyframes menuContentIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes menuContentOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(8px)}}
+.theme-animating svg{animation:themeIconSpin .41s cubic-bezier(.45,0,.2,1)}
+@keyframes themeIconSpin{from{transform:rotate(-120deg) scale(.82)}to{transform:rotate(0) scale(1)}}
+.theme-transitioning body,.theme-transitioning body *{transition:none!important}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}
+::view-transition-new(root){z-index:9999}
+@media(prefers-reduced-motion:reduce){.theme-animating svg{animation:none}}
 .text-button,.menu-actions .text-button{letter-spacing:0!important;font-size:12px!important;font-weight:400!important}
