@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import type { MouseEvent, PointerEvent, WheelEvent } from 'react';
+import type { MouseEvent, WheelEvent } from 'react';
 import { ArrowLeft, ArrowRight, Check, Moon, Plus, Sun, X } from 'lucide-react';
 import WarpLogo from '@/components/WarpLogo';
 import DotGrid from '@/components/DotGrid';
+import SpotlightCard from '@/components/SpotlightCard';
 
 type View = 'home' | 'project' | 'progress';
 const stages = ['兴趣调查', '打样', '预售', '团购', '生产中', '发货中', '已完成'];
@@ -53,8 +54,8 @@ export default function Home() {
   const [heroSlide, setHeroSlide] = useState(0);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark);
-  }, [dark]);
+    document.documentElement.classList.toggle('dark', dark || view === 'project');
+  }, [dark, view]);
   useEffect(() => {
     if (view !== 'home') return;
     const frame = window.requestAnimationFrame(() => {
@@ -199,7 +200,7 @@ export default function Home() {
       <button className="brand" onClick={() => go('home')} aria-label="Mars Universe 首页"><WarpLogo src="/assets/headline-mars-logo.svg" alt="Mars Universe" /></button>
       <div className="header-actions">
         <button className="text-button" onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}>{lang === 'zh' ? 'EN' : '中文'}</button>
-        <button className="icon-button" onClick={toggleTheme} aria-label="切换黑白模式">{dark ? <Sun size={18} /> : <Moon size={18} />}</button>
+        {view !== 'project' && <button className="icon-button" onClick={toggleTheme} aria-label="切换黑白模式">{dark ? <Sun size={18} /> : <Moon size={18} />}</button>}
         <button className="menu-button" onClick={() => { setMenuClosing(false); setMenuOpen(true); }}><span>MENU</span><MenuMorphIcon /></button>
       </div>
     </header>
@@ -223,13 +224,12 @@ export default function Home() {
     </section>}
 
     {view === 'project' && <article className="project-page">
-      <section className="project-hero"><div className="hero-slides" aria-hidden="true">{heroImages.map((image, index) => <img className={index === heroSlide ? 'active' : ''} src={image} alt="" key={image} />)}</div><div className="hero-copy"><button className="back-link" onClick={() => go('home')}><ArrowLeft size={16} /> 返回项目</button><p className="eyebrow">DOUBLE-SHOT · RETRO VIBE · SWG</p><h1>RETRO RED LIGHT</h1><span className="status-pill">当前阶段 · 打样</span></div></section>
-      <section className="content-grid"><div><h2>灵感来自一台<br />1982 年的终端键盘</h2><p>Retro Red Light 的设计灵感来自 Data General 6246。克制的灰阶、红色功能键与工业标签，共同构成这套键帽的视觉语言。</p></div></section>
-      <section className="specs">{[['MANUFACTURER','SWG'],['MATERIAL','ABS'],['METHODS','DOUBLE-SHOT'],['LAUNCH DATE','2026.Q4']].map(([label,value]) => <div key={label}><span>{label}</span><strong>{value}</strong></div>)}</section>
-      <ProgressStrip />
-      <Gallery title="配列布局" note="点击图片查看产品细节" images={['/assets/kit-general.jpg','/assets/kit-dark.jpg','/assets/kit-extensions.jpg','/assets/retro-extensions.jpg']} onOpen={setLightbox} />
-      <ScrollShowcase images={['/assets/render-1.jpg','/assets/render-2.jpg','/assets/render-5.jpg']} />
-      <Gallery title="产品渲染" note="更多图片可从后台添加" images={['/assets/render-1.jpg','/assets/render-2.jpg','/assets/render-5.jpg','/assets/retro-hero.jpg']} onOpen={setLightbox} />
+      <section className="project-hero"><div className="hero-slides" aria-hidden="true">{heroImages.map((image, index) => <img className={index === heroSlide ? 'active' : ''} src={image} alt="" key={image} />)}</div><div className="hero-copy"><button className="back-link" onClick={() => go('home')}><ArrowLeft size={16} /> {lang === 'zh' ? '返回项目' : 'BACK TO PROJECTS'}</button><p className="eyebrow">DOUBLE-SHOT · RETRO VIBE · SWG</p><h1>RETRO RED LIGHT</h1><span className="status-pill">{lang === 'zh' ? '当前阶段 · 打样' : 'CURRENT STAGE · PROTOTYPING'}</span></div></section>
+      <section className="content-grid"><div><h2>{lang === 'zh' ? '灵感来自一台 1982 年的终端键盘' : 'INSPIRED BY A 1982 TERMINAL KEYBOARD'}</h2><p>{lang === 'zh' ? 'Retro Red Light 的设计灵感来自 Data General 6246。克制的灰阶、红色功能键与工业标签，共同构成这套键帽的视觉语言。' : 'Retro Red Light draws inspiration from the Data General 6246. Restrained grayscale, red function keys, and industrial labels shape the visual language of this keycap set.'}</p></div></section>
+      <SpotlightCard className="specs" spotlightColor="rgba(243, 1, 1, 0.42)">{[['MANUFACTURER','SWG'],['MATERIAL','ABS'],['METHODS','DOUBLE-SHOT'],['LAUNCH DATE','2026.Q4']].map(([label,value]) => <div key={label}><span>{label}</span><strong>{value}</strong></div>)}</SpotlightCard>
+      <ProgressStrip lang={lang} />
+      <Gallery title={lang === 'zh' ? '配列布局' : 'LAYOUT'} note={lang === 'zh' ? '点击图片查看产品细节' : 'CLICK AN IMAGE TO VIEW DETAILS'} images={['/assets/kit-general.jpg','/assets/kit-dark.jpg','/assets/kit-extensions.jpg','/assets/retro-extensions.jpg']} onOpen={setLightbox} />
+      <Gallery title={lang === 'zh' ? '产品渲染' : 'PRODUCT RENDERS'} note={lang === 'zh' ? '更多图片可从后台添加' : 'MORE IMAGES CAN BE ADDED FROM THE CMS'} images={['/assets/render-1.jpg','/assets/render-2.jpg','/assets/render-5.jpg','/assets/retro-hero.jpg']} onOpen={setLightbox} />
       <section className="next-project"><span>NEXT PROJECT</span><h2>PURE PLAYER: XY</h2><ArrowRight size={36} /></section>
     </article>}
 
@@ -248,7 +248,7 @@ export default function Home() {
     </section>}
 
     {menuOpen && <div className={`menu-overlay ${lang === 'zh' ? 'menu-zh' : 'menu-en'} ${menuClosing ? 'menu-closing' : ''}`} role="dialog" aria-modal="true" aria-label="主菜单">
-      <div className="menu-top"><button className="menu-logo" onClick={() => go('home')} aria-label="Mars Universe"><WarpLogo src="/assets/headline-mars-logo.svg" alt="Mars Universe" /></button><div className="menu-actions"><button className="text-button" onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}>{lang === 'zh' ? 'EN' : '中文'}</button><button className="icon-button" onClick={toggleTheme} aria-label="切换黑白模式">{dark ? <Sun size={18} /> : <Moon size={18} />}</button><button className="menu-close" onClick={closeMenu}><MenuMorphIcon open={!menuClosing} closing={menuClosing} /> CLOSE</button></div></div>
+      <div className="menu-top"><button className="menu-logo" onClick={() => go('home')} aria-label="Mars Universe"><WarpLogo src="/assets/headline-mars-logo.svg" alt="Mars Universe" /></button><div className="menu-actions"><button className="text-button" onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}>{lang === 'zh' ? 'EN' : '中文'}</button>{view !== 'project' && <button className="icon-button" onClick={toggleTheme} aria-label="切换黑白模式">{dark ? <Sun size={18} /> : <Moon size={18} />}</button>}<button className="menu-close" onClick={closeMenu}><MenuMorphIcon open={!menuClosing} closing={menuClosing} /> CLOSE</button></div></div>
       <nav>
         <button aria-label={lang === 'zh' ? '首页' : 'HOME'} onClick={() => go('home')}><RollingText text={lang === 'zh' ? '首页' : 'HOME'} /></button>
         <button aria-label={lang === 'zh' ? '全部项目' : 'ALL PROJECTS'} onClick={() => go('home')}><RollingText text={lang === 'zh' ? '全部项目' : 'ALL PROJECTS'} /></button>
@@ -261,37 +261,11 @@ export default function Home() {
   </main>;
 }
 
-function ProgressStrip() {
-  return <section className="progress-strip"><div className="strip-heading"><p className="section-number">PROJECT PROGRESS</p><strong>当前阶段：打样</strong></div><div className="stage-track">{stages.map((stage,i) => <div className={i === 0 ? 'done' : i === 1 ? 'current' : ''} key={stage}><i>{i === 0 ? <Check size={15} /> : i + 1}</i><span>{stage}</span></div>)}</div><div className="stage-detail"><span>2026.09.02</span><p>第一次样品颜色偏深，目前正在调整并准备第二轮打样。</p></div></section>;
+function ProgressStrip({ lang }: { lang: 'zh' | 'en' }) {
+  const labels = lang === 'zh' ? stages : ['RESEARCH', 'PROTOTYPE', 'PRE-ORDER', 'GROUP BUY', 'IN PRODUCTION', 'SHIPPING', 'COMPLETED'];
+  return <section className="progress-strip"><div className="strip-heading"><p className="section-number">PROJECT PROGRESS</p><strong>{lang === 'zh' ? '当前阶段：打样' : 'CURRENT STAGE: PROTOTYPING'}</strong></div><div className="stage-track">{labels.map((stage,i) => <div className={i === 0 ? 'done' : i === 1 ? 'current' : ''} key={stage}><i>{i === 0 ? <Check size={15} /> : i + 1}</i><span>{stage}</span></div>)}</div><div className="stage-detail"><span>2026.09.02</span><p>{lang === 'zh' ? '第一次样品颜色偏深，目前正在调整并准备第二轮打样。' : 'The first sample was too dark; adjustments are underway for the second prototype round.'}</p></div></section>;
 }
 
 function Gallery({ title, note, images, onOpen }: { title:string; note:string; images:string[]; onOpen:(image:string)=>void }) {
   return <section className="gallery-section"><div className="gallery-heading"><h2>{title}</h2><p>{note}</p></div><div className="gallery-grid">{images.map((image,i) => <button key={image} onClick={() => onOpen(image)} aria-label={`查看${title}图片 ${i + 1}`}><img src={image} alt={`${title} ${i + 1}`} loading="lazy" /></button>)}</div></section>;
-}
-
-function ScrollShowcase({ images }: { images:string[] }) {
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const dragState = useRef({ active: false, x: 0, scrollLeft: 0 });
-  const startDrag = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0) return;
-    const track = trackRef.current;
-    if (!track) return;
-    dragState.current = { active: true, x: event.clientX, scrollLeft: track.scrollLeft };
-    track.setPointerCapture(event.pointerId);
-    event.preventDefault();
-  };
-  const moveDrag = (event: PointerEvent<HTMLDivElement>) => {
-    const track = trackRef.current;
-    if (!track || !dragState.current.active) return;
-    track.scrollLeft = dragState.current.scrollLeft - (event.clientX - dragState.current.x);
-    event.preventDefault();
-  };
-  const stopDrag = () => { dragState.current.active = false; };
-  const scrollSideways = (event: WheelEvent<HTMLDivElement>) => {
-    const track = trackRef.current;
-    if (!track || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-    event.preventDefault();
-    track.scrollLeft += event.deltaY;
-  };
-  return <section className="scroll-showcase"><div className="scroll-showcase-heading"><h2>滚屏展示</h2><p>DRAG OR SCROLL TO EXPLORE</p></div><div className="scroll-showcase-track" ref={trackRef} onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={stopDrag} onPointerCancel={stopDrag} onWheel={scrollSideways}>{images.map((image, index) => <figure key={image}><img src={image} alt={`Retro Red Light 滚屏展示 ${index + 1}`} draggable={false} /></figure>)}</div></section>;
 }

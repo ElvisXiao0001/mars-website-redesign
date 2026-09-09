@@ -563,6 +563,79 @@ body{
 .home-dot-grid{position:absolute;z-index:0;inset:74px 0 0;overflow:hidden;pointer-events:none;opacity:.24}
 .home-dot-grid canvas{display:block;width:100%;height:100%}
 .home-screen>.project-list,.home-screen>.mobile-project-feed{position:relative;z-index:1}
+
+/* Retro Red Light is presented exclusively in the dark theme. */
+.project-page{background:var(--bg);color:var(--fg)}
+.spotlight-card-stage{
+  position:relative;
+  margin-inline:4vw;
+  perspective:1100px;
+}
+.card-spotlight{
+  position:relative;
+  --mouse-x:50%;
+  --mouse-y:50%;
+  --spotlight-color:rgba(255,255,255,.18);
+  --card-shift-x:0px;
+  --card-shift-y:0px;
+  --card-rotate-x:0deg;
+  --card-rotate-y:0deg;
+  overflow:hidden;
+  transform:translate3d(var(--card-shift-x),var(--card-shift-y),0) rotateX(var(--card-rotate-x)) rotateY(var(--card-rotate-y));
+  transform-style:preserve-3d;
+  transform-origin:center;
+  transition:transform .16s cubic-bezier(.22,.8,.3,1),box-shadow .28s ease;
+  will-change:transform;
+}
+.card-spotlight::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle 330px at var(--mouse-x) var(--mouse-y),var(--spotlight-color),transparent 76%);
+  opacity:0;
+  transition:opacity .38s ease;
+  pointer-events:none;
+}
+.card-spotlight:hover::before,.card-spotlight:focus-within::before{opacity:.9}
+.card-spotlight>*{position:relative;z-index:1}
+.specs.card-spotlight{
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:20px;
+  background:#1c1c1c;
+  box-shadow:0 18px 50px rgba(0,0,0,.2);
+}
+.specs.card-spotlight:hover{
+  border-color:rgba(255,255,255,.2);
+  box-shadow:0 22px 58px rgba(0,0,0,.34);
+}
+@media(max-width:780px),(prefers-reduced-motion:reduce){
+  .card-spotlight{transform:none!important;transition:box-shadow .28s ease}
+}
+@media(max-width:780px){
+  .spotlight-card-stage{margin-inline:18px}
+}
+.project-page .content-grid{padding-bottom:4vw}
+.project-page .content-grid>div{width:100%}
+.project-page .content-grid h2{
+  white-space:nowrap;
+  font-size:clamp(34px,4.35vw,70px);
+}
+.project-page .content-grid p:last-child{
+  max-width:none;
+  white-space:nowrap;
+  font-size:clamp(13px,1.35vw,17px);
+}
+@media(max-width:780px){
+  .project-page .content-grid{padding-bottom:42px}
+  .project-page .content-grid h2{
+    white-space:nowrap;
+    font-size:clamp(22px,5.2vw,38px);
+  }
+  .project-page .content-grid p:last-child{
+    white-space:normal;
+    font-size:15px;
+  }
+}
 @media(min-width:781px){
   .home-screen{height:100svh;min-height:100svh;overflow:hidden;padding:74px 2.5vw 5vh}
   .home-screen>.project-list{
